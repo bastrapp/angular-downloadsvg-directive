@@ -220,7 +220,8 @@
 
 		svg
 			.attr("version", 1.1)
-			.attr("xmlns", "http://www.w3.org/2000/svg");
+			.attr("xmlns", "http://www.w3.org/2000/svg")
+			.attr("xmlns:xlink", "http://www.w3.org/1999/xlink");
 
 		var html = svg[0].outerHTML || (new $window.XMLSerializer()).serializeToString(svg[0]);
 		var blob = new $window.Blob([html], { type: "text/xml" });
