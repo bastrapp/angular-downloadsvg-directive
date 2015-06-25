@@ -112,6 +112,10 @@
 		} else {
 			val = node.style[name];
 		}
+
+		if (val && val.indexOf("url") > -1) {
+			val = val.substring(0, val.indexOf("(") + 2) + val.substring(val.indexOf("#"));
+		}
 		return  (val === '') ? undefined : val;
 	}
 
