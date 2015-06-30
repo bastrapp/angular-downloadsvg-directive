@@ -115,8 +115,10 @@
 		}
 
 		if (val && val.indexOf("url") > -1) {
-			val = val.substring(0, val.indexOf("(") + 2) + val.substring(val.indexOf("#"));
+			val = val.substring(0, val.indexOf("(") + 1) + val.substring(val.indexOf("#"));
+			val = val.substr(0, val.indexOf(")") - 1) + ")";
 		}
+
 		return  (val === '') ? undefined : val;
 	}
 
@@ -225,6 +227,12 @@
 			.attr("xmlns:xlink", "http://www.w3.org/1999/xlink");
 
 		var html = svg[0].outerHTML || (new $window.XMLSerializer()).serializeToString(svg[0]);
+
+		html = html.replace(/\(&quot;/g, "('");
+		html = html.replace(/&quot;\)\snone/g, "')");
+		html = html.replace(/&quot;\)/g, "')");
+		html = html.replace(/&quot;/g, "'");
+
 		var blob = new $window.Blob([html], { type: "text/xml" });
 
 		return {
