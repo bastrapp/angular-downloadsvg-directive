@@ -100,6 +100,7 @@
 		'points',				// Polygons
 		'offset',
 		'gradientUnits',
+		'patternUnits', 'patternTransform',
 	];
 
 	// adapted from https://github.com/angular/angular.js/issues/2866#issuecomment-31012434
